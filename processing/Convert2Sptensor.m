@@ -1,7 +1,13 @@
-addpath('GT_utils/')
 
-processed_data_path = 'processed_data/';
-data_name = 'BRCA1';
+
+scriptDir = fileparts(mfilename('fullpath'));
+
+% Move one level up (parent directory)
+parentDir = fileparts(scriptDir);
+
+addpath(fullfile(parentDir, 'GT_utils/'))
+processed_data_path = fullfile(parentDir, 'processed_data/');
+data_name = 'CustomData';
 filepath = [processed_data_path, data_name, '.mat'];
 load(filepath)
 

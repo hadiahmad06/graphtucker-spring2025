@@ -49,14 +49,14 @@
 #       spatial information:
 #       https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/output/images
 #
-
+.libPaths("~/R/library")
 # Package required to run this script
 packages <- c("argparser", "Matrix", "R.matlab","data.table")
 
 # Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())
 if (any(installed_packages == FALSE)) {
-  install.packages(packages[!installed_packages],repos = "http://cran.us.r-project.org")
+  install.packages(packages[!installed_packages],repos = "http://cran.us.r-project.org", lib="~/R/library")
 }
 
 # Load packages

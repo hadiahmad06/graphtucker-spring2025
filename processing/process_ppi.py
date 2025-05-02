@@ -14,14 +14,14 @@ import pandas as pd
 from scipy.sparse import coo_matrix
 from scipy.io import savemat
 
-PPI_data_path = '../data/BRCA1/BIOGRID-ORGANISM-Homo_sapiens-4.4.231.tab3.txt'  # path to downloaded PPI file
+PPI_data_path = '../data/CustomData/BIOGRID-ORGANISM-Homo_sapiens-4.4.245.tab3.txt'  # path to downloaded PPI file
 ppi_name = 'HSA_ppi'  # this is the name of the PPI it will be saved as, much shorter than the original name
-save_path = '../data/BRCA1/' # change this to where you want PPI.mat file saved
+save_path = '../data/CustomData/' # change this to where you want PPI.mat file saved
 ppi_save_path = save_path + ppi_name + '.mat'
 print('PPI will be saved to: ', ppi_save_path)
 
 # load list of gene names present in Visium dataset
-features_path = '../data/BRCA1/filtered_feature_bc_matrix/features.tsv.gz'
+features_path = '../data/CustomData/filtered_feature_bc_matrix/features.tsv.gz'
 
 gene_names = np.char.lower(np.array([row[1] for row in csv.reader(gzip.open(features_path, 'rt'), delimiter="\t")]))
 
