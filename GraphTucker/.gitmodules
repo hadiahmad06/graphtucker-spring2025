@@ -1,0 +1,3 @@
+[submodule "GraphTucker"]
+	path = GraphTucker
+	url = https://github.com/hadiahmad06/GraphTucker.git
