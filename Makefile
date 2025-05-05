@@ -3,10 +3,6 @@ GRAPH_TUCKER_DIR = GraphTucker
 DATA_DIR = $(GRAPH_TUCKER_DIR)/data
 PROCESSED_DATA_DIR = $(GRAPH_TUCKER_DIR)/processed_data
 RESULTS_DIR = $(GRAPH_TUCKER_DIR)/res
-SCRIPT_DIR = $(GRAPH_TUCKER_DIR)/implementation
-
-# MATLAB script
-MATLAB_SCRIPT = $(SCRIPT_DIR)/run_graphtucker.m
 
 # Default target
 all: run_custom_data
@@ -14,7 +10,17 @@ all: run_custom_data
 # Run GraphTucker on CustomData
 run_custom_data: setup
 	@echo "Running GraphTucker on CustomData..."
-	matlab -batch "run('$(MATLAB_SCRIPT)'); exit"
+	cd $(GRAPH_TUCKER_DIR) && matlab -batch "run('GraphTucker.m'); exit"
+
+# Run GraphTucker on BRCA1 using tutorial
+run_mosta: setup
+	@echo "Running GraphTucker on MOSTA_9.5..."
+	cd $(GRAPH_TUCKER_DIR) && matlab -batch "run('GraphTucker_tutorial1.m'); exit"
+
+# Run GraphTucker on BRCA1 using tutorial
+run_brca1: setup
+	@echo "Running GraphTucker on BRCA1..."
+	cd $(GRAPH_TUCKER_DIR) && matlab -batch "run('GraphTucker_tutorial2.m'); exit"
 
 # Clean up results
 clean:
@@ -30,8 +36,9 @@ help:
 	@echo "Available targets:"
 	@echo "  all              - Run GraphTucker on CustomData"
 	@echo "  run_custom_data  - Run GraphTucker on CustomData"
+	@echo "  run_brca1        - Run GraphTucker on BRCA1 dataset using tutorial"
 	@echo "  clean           - Remove results"
 	@echo "  setup           - Create necessary directories"
 	@echo "  help            - Show this help message"
 
-.PHONY: all run_custom_data clean setup help
+.PHONY: all run_custom_data run_brca1 clean setup help
