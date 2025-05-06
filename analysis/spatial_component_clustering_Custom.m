@@ -11,6 +11,13 @@ rank_list = [30 30 num_regions];
 rank_str = [num2str(rank_list(1)), '-', num2str(rank_list(2)), '-', num2str(rank_list(3))];
 lambda = 1;
 
+% load gene names
+gene_table = readtable(['../processed_data/', dataset, '/', dataset, '_gene.csv']);
+gene_names = gene_table.V2;  % Using V2 column which contains gene symbols
+fprintf('Number of genes: %d\n', length(gene_names));
+fprintf('First 5 gene names:\n');
+disp(gene_names(1:5));
+
 % load data
 load(['../res/', dataset, '/GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'.mat']);
 G = permute(G, [3 2 1]); % permute core tensor for visualization
@@ -48,7 +55,33 @@ G_xy = G_xy(val_idx,:);
 G_xy = normr(G_xy); % normalize
 
 % run k-means with k=num_regions, 5 replicates
-idx = kmeans(G_xy, num_regions, 'Replicates', 5);
+[idx, centroids] = kmeans(G_xy, num_regions, 'Replicates', 5);
+
+% Analyze gene expression patterns for each cluster
+fprintf('\nTop 6 genes per cluster:\n');
+% Initialize array to track gene occurrences
+gene_occurrences = zeros(length(gene_names), 1);
+top_genes_per_cluster = cell(num_regions, 6);
+
+for i = 1:num_regions
+    cluster_genes = G_xy(idx == i, :);
+    [sorted_means, top_gene_idx] = sort(mean(cluster_genes, 1), 'descend');
+    fprintf('\nCluster %d:\n', i);
+    for j = 1:6
+        fprintf('%s score=%.2f\n', gene_names{top_gene_idx(j)}, sorted_means(j));
+        gene_occurrences(top_gene_idx(j)) = gene_occurrences(top_gene_idx(j)) + 1;
+        top_genes_per_cluster{i,j} = gene_names{top_gene_idx(j)};
+    end
+end
+
+% Find genes with highest occurrences
+[sorted_occurrences, sorted_idx] = sort(gene_occurrences, 'descend');
+fprintf('\nGenes appearing most frequently across clusters:\n');
+for i = 1:10
+    if sorted_occurrences(i) > 0
+        fprintf('%s appears in %d clusters\n', gene_names{sorted_idx(i)}, sorted_occurrences(i));
+    end
+end
 
 vis = zeros([size(A_x, 1), size(A_y, 1)]);
 vis(val_idx) = idx;
@@ -68,5 +101,26 @@ axis image off
 % save clustering results
 savepath = ['../vis/', dataset, '/clustering/clustered_spatial_components.png'];
 saveas(gcf, savepath);       
+
+% Save gene analysis results
+fid = fopen(['../vis/', dataset, '/clustering/gene_analysis.txt'], 'w');
+fprintf(fid, 'Top 6 genes per cluster:\n');
+for i = 1:num_regions
+    cluster_genes = G_xy(idx == i, :);
+    [sorted_means, top_gene_idx] = sort(mean(cluster_genes, 1), 'descend');
+    fprintf(fid, '\nCluster %d:\n', i);
+    for j = 1:6
+        fprintf(fid, '%s score=%.2f\n', gene_names{top_gene_idx(j)}, sorted_means(j));
+    end
+end
+
+% Save most frequent genes
+fprintf(fid, '\nGenes appearing most frequently across clusters:\n');
+for i = 1:10
+    if sorted_occurrences(i) > 0
+        fprintf(fid, '%s - %d occurrences\n', gene_names{sorted_idx(i)}, sorted_occurrences(i));
+    end
+end
+fclose(fid);
 
 close all

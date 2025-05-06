@@ -1,0 +1,173 @@
+Top 6 genes per cluster:
+
+Cluster 1:
+PIK3CD score=0.52
+DFFA score=0.42
+CLIC4 score=0.26
+DHDDS score=0.23
+CLSTN1 score=0.22
+STMN1 score=0.20
+
+Cluster 2:
+MTOR score=0.74
+EPHB2 score=0.38
+DFFB score=0.16
+SPEN score=0.14
+GALE score=0.13
+E2F2 score=0.12
+
+Cluster 3:
+DFFB score=0.75
+EPHB2 score=0.45
+SDHB score=0.19
+GALE score=0.10
+KLHL21 score=0.09
+CLSTN1 score=0.09
+
+Cluster 4:
+ICMT score=0.72
+EPHB2 score=0.25
+DFFB score=0.25
+PIK3CD score=0.17
+SDHB score=0.15
+CLSTN1 score=0.14
+
+Cluster 5:
+E2F2 score=0.66
+TMEM50A score=0.35
+RAP1GAP score=0.28
+CDC42 score=0.25
+AKR7A2 score=0.25
+KLHL21 score=0.19
+
+Cluster 6:
+AKR7A2 score=0.55
+PIK3CD score=0.40
+EPHA2 score=0.28
+GALE score=0.28
+TMEM50A score=0.19
+DHDDS score=0.19
+
+Cluster 7:
+MTOR score=0.40
+TMEM50A score=0.36
+GALE score=0.31
+KLHL21 score=0.30
+CLIC4 score=0.30
+DFFB score=0.27
+
+Cluster 8:
+DFFB score=0.62
+SDHB score=0.48
+STMN1 score=0.23
+EPHA2 score=0.15
+AKR7A2 score=0.14
+CLSTN1 score=0.12
+
+Cluster 9:
+RAP1GAP score=0.62
+KLHL21 score=0.43
+PIK3CD score=0.27
+DFFB score=0.22
+CLSTN1 score=0.18
+TMEM50A score=0.16
+
+Cluster 10:
+EPHA2 score=0.37
+PIK3CD score=0.36
+DHDDS score=0.33
+RAP1GAP score=0.32
+MTOR score=0.23
+TMEM50A score=0.22
+
+Cluster 11:
+SPEN score=0.65
+EPHB2 score=0.36
+DFFB score=0.35
+SDHB score=0.16
+AKR7A2 score=0.15
+RAP1GAP score=0.15
+
+Cluster 12:
+EPHB2 score=0.51
+DFFB score=0.39
+SDHB score=0.31
+CLSTN1 score=0.22
+RAP1GAP score=0.19
+SPEN score=0.17
+
+Cluster 13:
+CLSTN1 score=0.36
+ICMT score=0.33
+DFFB score=0.27
+EPHA2 score=0.24
+STMN1 score=0.24
+SDHB score=0.23
+
+Cluster 14:
+STMN1 score=0.69
+EPHA2 score=0.26
+AKR7A2 score=0.23
+CDC42 score=0.23
+SDHB score=0.22
+CLSTN1 score=0.17
+
+Cluster 15:
+CDC42 score=0.63
+AKR7A2 score=0.34
+E2F2 score=0.28
+STMN1 score=0.20
+PIK3CD score=0.19
+CLSTN1 score=0.18
+
+Cluster 16:
+PIK3CD score=0.42
+EPHB2 score=0.39
+GALE score=0.34
+AKR7A2 score=0.29
+DFFB score=0.24
+STMN1 score=0.21
+
+Cluster 17:
+TMEM50A score=0.51
+KLHL21 score=0.51
+RAP1GAP score=0.26
+CLIC4 score=0.25
+DFFB score=0.22
+EPHA2 score=0.20
+
+Cluster 18:
+DFFB score=0.58
+KLHL21 score=0.26
+TMEM50A score=0.21
+SDHB score=0.21
+GALE score=0.20
+CLSTN1 score=0.20
+
+Cluster 19:
+EPHB2 score=0.82
+DFFB score=0.31
+MTOR score=0.15
+SPEN score=0.14
+SDHB score=0.12
+ICMT score=0.11
+
+Cluster 20:
+DFFA score=0.43
+CLSTN1 score=0.36
+AKR7A2 score=0.28
+CLIC4 score=0.28
+DHDDS score=0.26
+PIK3CD score=0.19
+
+Genes appearing most frequently across clusters:
+DFFB - 13 occurrences
+CLSTN1 - 11 occurrences
+SDHB - 9 occurrences
+PIK3CD - 8 occurrences
+AKR7A2 - 8 occurrences
+EPHB2 - 7 occurrences
+TMEM50A - 7 occurrences
+KLHL21 - 6 occurrences
+EPHA2 - 6 occurrences
+RAP1GAP - 6 occurrences
