@@ -12,7 +12,7 @@ rank_str = [num2str(rank_list(1)), '-', num2str(rank_list(2)), '-', num2str(rank
 lambda = 1;
 
 % load data
-load(['../res/', dataset, '/GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'.mat']);
+load(['../res/', dataset, '/GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'_EXAMPLE.mat']);
 G = permute(G, [3 2 1]); % permute core tensor for visualization
 A_x = A_set{1}{2};
 A_y = A_set{1}{1};
