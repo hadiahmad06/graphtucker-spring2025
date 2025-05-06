@@ -63,5 +63,5 @@ PPI_GENE_NAMES =  cellstr(HSA_UNIQ_BIOGRID_GENE);
 [ia,ib] = ismember(lower(genes),PPI_GENE_NAMES);
 W{3}(ia,ia) = HSA_BIOGRID(ib(ib>0),ib(ib>0));
 
-V = V(:,:, find(ia)); % only use genes that are in the PPI. OPTIONAL
+%V = V(:,:, find(ia)); % only use genes that are in the PPI. OPTIONAL
 end

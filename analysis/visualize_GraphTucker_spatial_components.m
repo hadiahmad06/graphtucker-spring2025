@@ -1,6 +1,6 @@
 clear all;clc
 
-dataset = 'MOSTA_9.5'; % name of data being used
+dataset = 'CustomData'; % name of data being used
 data_path = ['../data/', dataset, '/']; % path to where spatial gene expression data is located
 utils_path = '../GT_utils/';
 res_path = ['../res/', dataset, '/'];
@@ -8,8 +8,8 @@ dst_path = ['../vis/', dataset, '/']; % path to where spatial component visualiz
 addpath(utils_path) % add path so util files can be found
 
 % set to tested rank and lambda
-rank_list = [64 64 64];
-lambda = 0.1;
+rank_list = [30 30 20];
+lambda = 1;
 
 % load GraphTucker components.
 % this script loads an example set of GraphTucker components run on
@@ -17,7 +17,7 @@ lambda = 0.1;
 % by EXAMPLE.
 % Change the path variables to load a different set of results.
 rank_str = [num2str(rank_list(1)), '-', num2str(rank_list(2)), '-', num2str(rank_list(3))];
-load([res_path, 'GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'_EXAMPLE.mat']);
+load([res_path, 'GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'.mat']);
 
 % permute core tensor for n-mode multiplication
 G = permute(G, [3 2 1]);

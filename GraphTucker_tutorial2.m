@@ -1,12 +1,12 @@
 clear all;clc
 
 opts.stopcrit = 10^-4; % stopping criteria for GraphTucker convergence
-opts.maxiters = 0; % max iterations - we recommend using 1000
+opts.maxiters = 1000; % max iterations - we recommend using 1000
 opts.mode = 1; % set to 0 to run GraphTucker with sparse data tensors, or 1 for non-sparse
 % we observe faster runtimes when using non-sparse tensors, so we set this
 % to 1
 
-tissue_name = 'BRCA1';
+tissue_name = 'CustomData';
 processing_path = 'processing/';
 data_path = ['processed_data/', tissue_name, '/']; % path to where spatial gene expression data is located
 utils_path ='GT_utils/';

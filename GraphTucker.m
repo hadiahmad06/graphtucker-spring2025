@@ -376,7 +376,7 @@ for iter = 1:opts.maxiters
        train_len = numel(M_set{1}.data);
 
        Y_train = tensor(Y_curr .* M_train);
-       V_train = tensor(V .* M_train);
+       V_train = tensor(permute(V,[2,3,1]) .* M_train);
 
        train_rmse = sqrt(sum((Y_train.data - V_train.data).^2, 'all') / train_len);
 

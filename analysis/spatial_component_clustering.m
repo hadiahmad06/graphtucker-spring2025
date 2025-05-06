@@ -12,16 +12,16 @@ rank_str = [num2str(rank_list(1)), '-', num2str(rank_list(2)), '-', num2str(rank
 lambda = 1;
 
 % load data
-load(['../res/', dataset, '/GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'_EXAMPLE.mat']);
+load(['../res/', dataset, '/GT_', dataset, '_rank=', rank_str ,'_lambda=', num2str(lambda) ,'.mat']);
 G = permute(G, [3 2 1]); % permute core tensor for visualization
 A_x = A_set{1}{2};
 A_y = A_set{1}{1};
 n = [size(A_x, 1), size(A_y, 1)];
 
 % coloring for 20 regions
-cmap = ['1f77b4', 'aec7e8', 'ff7f0e', 'ffbb78', '2ca02c', '98df8a', 'd62728', ...
-    'ff9896', '9467bd', 'c5b0d5', '8c564b', 'c49c94', 'e377c2', 'f7b6d2', ...
-    '7f7f7f', 'c7c7c7', 'bcbd22', 'dbdb8d', '17becf', '9edae5'];
+cmap = ["#1f77b4", "#aec7e8", "#ff7f0e", "#ffbb78", "#2ca02c", "#98df8a", "#d62728", ...
+    "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94", "#e377c2", "#f7b6d2", ...
+    "#7f7f7f", "#c7c7c7", "#bcbd22", "#dbdb8d", "#17becf", "#9edae5"];
 cmap = hex2rgb(cmap);
 
 % construct spatial component tensor
@@ -119,8 +119,8 @@ img_data = clustering_mapped;
 img_data(annomat == -1) = nan;
 
 figure
-h = imagesc(img_data);
 colormap(cmap) 
+h = imagesc(img_data);
 set(h, 'AlphaData', ~isnan(img_data));
 set(gcf, 'Position', [100, 100, 300, 300]);
 axis image off
