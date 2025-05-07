@@ -38,11 +38,6 @@ bg_mat = zeros(size(A_x,1), size(A_y,1));
 val_subs = sub2ind(size(bg_mat), val_subs(:,2), val_subs(:,1));
 bg_mat(val_subs) = 1;
 
-
-% load subs file which contains indices for valid spots
-% load(['../processed_data/', dataset, '/', dataset, '_val_indices.mat'])
-% bg_mat(ind1, ind2) = 1;
-
 % loop through all spatial components
 for i=1:rank_list(3)
     disp(['spatial component: ', num2str(i)])
@@ -69,6 +64,41 @@ for i=1:rank_list(3)
     set(h, 'AlphaData', ~isnan(img_data));
 
     savepath = [savefolder,'/g_comp=', num2str(i), '.png'];
+    axis image off
+    saveas(gcf, savepath);
+    clf
+end
+close all
+
+% Define component groups to merge
+merged = {[1,16,20], [3,12,18], [2,11,19], [8,14,15], [5,10,17], [6,9,13]}; % Example groups of components to merge
+
+% Create merged component visualizations
+for group_idx = 1:length(merged)
+    current_group = merged{group_idx};
+    
+    % Initialize merged image
+    merged_img = zeros(size(A_x,1), size(A_y,1));
+    
+    % Sum the components in the group
+    for comp_idx = 1:length(current_group)
+        comp_num = current_group(comp_idx);
+        X_slice = X.data(:,:,comp_num);
+        merged_img = merged_img + X_slice;
+    end
+    
+    % Create visualization
+    figure
+    img_data = merged_img;
+    img_data(bg_mat == 0) = nan;
+    h = imagesc(img_data);
+    set(h, 'AlphaData', ~isnan(img_data));
+    
+    % Create filename with component numbers
+    comp_str = sprintf('_%d', current_group);
+    comp_str = comp_str(2:end); % Remove leading underscore
+    savepath = [savefolder, '/merged_components_', comp_str, '.png'];
+    
     axis image off
     saveas(gcf, savepath);
     clf
